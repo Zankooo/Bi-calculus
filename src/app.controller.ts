@@ -9,9 +9,5 @@ export class AppController {
     return { message: 'Hello World' };
   }
 
-  @Get('page')
-  getPage(@Res() res: Response) {
-    const filePath = join(__dirname, '..', 'public', 'index.html');
-    return res.sendFile(filePath);
-  }
+  
 }

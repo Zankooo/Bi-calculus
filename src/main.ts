@@ -2,14 +2,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { join } from 'path';
+
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-
-  // statika iz /public
-  app.useStaticAssets(join(__dirname, '..', 'public'));
 
   // Swagger / OpenAPI
   const config = new DocumentBuilder()
@@ -25,7 +22,13 @@ async function bootstrap() {
   });
 
   await app.listen(3000);
+
+
+  console.log('-------------------------------------------------------------')
   console.log('Swagger:   http://localhost:3000/api');
-  console.log('HTML page: http://localhost:3000/page');
+  console.log('HTML page: http://localhost:3000/hello');
 }
+
+
+
 bootstrap();
